@@ -1,6 +1,7 @@
 "use client";
 
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import NavbarLayoutFloatingInline from '@/components/navbar/NavbarLayoutFloatingInline';
 import HeroBillboard from '@/components/sections/hero/HeroBillboard';
 import TextSplitAbout from '@/components/sections/about/TextSplitAbout';
 import FeatureCardThree from '@/components/sections/feature/featureCardThree/FeatureCardThree';
@@ -8,7 +9,6 @@ import TestimonialCardTwo from '@/components/sections/testimonial/TestimonialCar
 import SocialProofTwo from '@/components/sections/socialProof/SocialProofTwo';
 import ContactSplit from '@/components/sections/contact/ContactSplit';
 import FooterBase from '@/components/sections/footer/FooterBase';
-import NavbarLayoutFloatingInline from '@/components/navbar/NavbarLayoutFloatingInline';
 
 const assetMap = [
   {"id":"hero-image","url":"https://images.pexels.com/photos/1001965/pexels-photo-1001965.jpeg?auto=compress&cs=tinysrgb&h=650&w=940","alt":"A luxurious hotel lobby featuring elegant architecture, rich decor, and comfortable seating under a stained glass ceiling."},
@@ -35,10 +35,10 @@ export default function Page() {
       defaultTextAnimation="reveal-blur"
       borderRadius="sharp"
     >
-      <div id="nav" data-section="nav">
+      <div id="nav" data-section="nav" className="scroll-mt-24">
         <div className={"mx-auto px-4 md:px-6 "}>
           <NavbarLayoutFloatingInline
-            navItems={[{ name: "Home", id: "home" }, { name: "About", id: "about" }, { name: "Rooms", id: "rooms" }, { name: "Contact", id: "contact" }]}
+            navItems={[{ name: "Home", id: "hero" }, { name: "About", id: "about" }, { name: "Rooms", id: "features" }, { name: "Contact", id: "contact" }]}
             brandName="HotelName"
             buttonText="Book Now"
             buttonVariant="hover-magnetic"
@@ -46,18 +46,18 @@ export default function Page() {
         </div>
       </div>
 
-      <div id="hero" data-section="hero" className={"scroll-mt-24 "}>
+      <div id="hero" data-section="hero" className="scroll-mt-24 ">
         <div className={"mx-auto px-4 md:px-6 "}>
           <HeroBillboard
             title="Welcome to Our Luxury Hotel"
             description="Experience unparalleled luxury in the heart of the city."
             imageSrc={assetMap.find(a => a.id === "hero-image")?.url ?? "/public/images/placeholder.webp"}
-            alt={assetMap.find(a => a.id === "hero-image")?.alt ?? "A luxurious hotel lobby featuring elegant architecture"}
+            imageAlt={assetMap.find(a => a.id === "hero-image")?.alt ?? "A luxurious hotel lobby featuring elegant architecture"}
           />
         </div>
       </div>
 
-      <div id="about" data-section="about" className={"scroll-mt-24 "}>
+      <div id="about" data-section="about" className="scroll-mt-24 ">
         <div className={"mx-auto px-4 md:px-6 "}>
           <TextSplitAbout
             title="About Us"
@@ -66,7 +66,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div id="features" data-section="features" className={"scroll-mt-24 "}>
+      <div id="features" data-section="features" className="scroll-mt-24 ">
         <div className={"mx-auto px-4 md:px-6 "}>
           <FeatureCardThree
             title="Our Features"
@@ -77,21 +77,21 @@ export default function Page() {
                 title: "Room Service",
                 description: "Delicious meals delivered to your room.",
                 imageSrc: assetMap.find(a => a.id === "feature-1-image")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "feature-1-image")?.alt ?? "Room service feature image"
+                imageAlt: assetMap.find(a => a.id === "feature-1-image")?.alt ?? "Room service feature image"
               },
               {
                 id: "02",
                 title: "Spa & Wellness",
                 description: "Relax and rejuvenate at our spa.",
                 imageSrc: assetMap.find(a => a.id === "feature-2-image")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "feature-2-image")?.alt ?? "Spa and wellness feature image"
+                imageAlt: assetMap.find(a => a.id === "feature-2-image")?.alt ?? "Spa and wellness feature image"
               }
             ]}
           />
         </div>
       </div>
 
-      <div id="testimonials" data-section="testimonials" className={"scroll-mt-24 "}>
+      <div id="testimonials" data-section="testimonials" className="scroll-mt-24 ">
         <div className={"mx-auto px-4 md:px-6 "}>
           <TestimonialCardTwo
             title="Customer Reviews"
@@ -103,7 +103,7 @@ export default function Page() {
                 role: "CEO, TechCorp",
                 testimonial: "An extraordinary stay!",
                 imageSrc: assetMap.find(a => a.id === "testimonial-1")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "testimonial-1")?.alt ?? "Businesswoman with curly hair"
+                imageAlt: assetMap.find(a => a.id === "testimonial-1")?.alt ?? "Businesswoman with curly hair"
               },
               {
                 id: "2",
@@ -111,7 +111,7 @@ export default function Page() {
                 role: "Traveler",
                 testimonial: "Amazing service and beautiful rooms.",
                 imageSrc: assetMap.find(a => a.id === "testimonial-2")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "testimonial-2")?.alt ?? "Woman working by poolside"
+                imageAlt: assetMap.find(a => a.id === "testimonial-2")?.alt ?? "Woman working by poolside"
               },
               {
                 id: "3",
@@ -119,7 +119,7 @@ export default function Page() {
                 role: "Director, DesignCo",
                 testimonial: "Exceeded all expectations.",
                 imageSrc: assetMap.find(a => a.id === "testimonial-3")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "testimonial-3")?.alt ?? "Group of adults on a boat"
+                imageAlt: assetMap.find(a => a.id === "testimonial-3")?.alt ?? "Group of adults on a boat"
               },
               {
                 id: "4",
@@ -127,81 +127,60 @@ export default function Page() {
                 role: "Solo Adventurer",
                 testimonial: "A truly luxurious experience.",
                 imageSrc: assetMap.find(a => a.id === "testimonial-4")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "testimonial-4")?.alt ?? "Woman relaxing in pool"
+                imageAlt: assetMap.find(a => a.id === "testimonial-4")?.alt ?? "Woman relaxing in pool"
               }
             ]}
           />
         </div>
       </div>
 
-      <div id="socialProof" data-section="socialProof" className={"scroll-mt-24 "}>
+      <div id="socialProof" data-section="socialProof" className="scroll-mt-24 ">
         <div className={"mx-auto px-4 md:px-6 "}>
           <SocialProofTwo
             title="Trusted By"
             description="Join our esteemed guests."
             logos={[
-              {
-                imageSrc: assetMap.find(a => a.id === "logo-1")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "logo-1")?.alt ?? "Trusted brand 1"
-              },
-              {
-                imageSrc: assetMap.find(a => a.id === "logo-2")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "logo-2")?.alt ?? "Trusted brand 2"
-              },
-              {
-                imageSrc: assetMap.find(a => a.id === "logo-3")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "logo-3")?.alt ?? "Trusted brand 3"
-              },
-              {
-                imageSrc: assetMap.find(a => a.id === "logo-4")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "logo-4")?.alt ?? "Trusted brand 4"
-              },
-              {
-                imageSrc: assetMap.find(a => a.id === "logo-5")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "logo-5")?.alt ?? "Trusted brand 5"
-              },
-              {
-                imageSrc: assetMap.find(a => a.id === "logo-6")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "logo-6")?.alt ?? "Trusted brand 6"
-              },
-              {
-                imageSrc: assetMap.find(a => a.id === "logo-7")?.url ?? "/public/images/placeholder.webp",
-                alt: assetMap.find(a => a.id === "logo-7")?.alt ?? "Trusted brand 7"
-              }
+              assetMap.find(a => a.id === "logo-1")?.url ?? "/public/images/placeholder.webp",
+              assetMap.find(a => a.id === "logo-2")?.url ?? "/public/images/placeholder.webp",
+              assetMap.find(a => a.id === "logo-3")?.url ?? "/public/images/placeholder.webp",
+              assetMap.find(a => a.id === "logo-4")?.url ?? "/public/images/placeholder.webp",
+              assetMap.find(a => a.id === "logo-5")?.url ?? "/public/images/placeholder.webp",
+              assetMap.find(a => a.id === "logo-6")?.url ?? "/public/images/placeholder.webp",
+              assetMap.find(a => a.id === "logo-7")?.url ?? "/public/images/placeholder.webp"
             ]}
           />
         </div>
       </div>
 
-      <div id="contact" data-section="contact" className={"scroll-mt-24 "}>
+      <div id="contact" data-section="contact" className="scroll-mt-24 ">
         <div className={"mx-auto px-4 md:px-6 "}>
           <ContactSplit
             tag="Newsletter"
             title="Stay updated with our latest news"
             description="Subscribe to our newsletter for updates and exclusive offers."
             imageSrc={assetMap.find(a => a.id === "about-image")?.url ?? "/public/images/placeholder.webp"}
-            alt={assetMap.find(a => a.id === "about-image")?.alt ?? "Indoor swimming pool"}
+            imageAlt={assetMap.find(a => a.id === "about-image")?.alt ?? "Indoor swimming pool"}
             buttonText="Subscribe"
           />
         </div>
       </div>
 
-      <div id="footer" data-section="footer" className={"scroll-mt-24 "}>
+      <div id="footer" data-section="footer" className="scroll-mt-24 ">
         <div className={"mx-auto px-4 md:px-6 "}>
           <FooterBase
             columns={[
               {
                 title: "Hotel",
                 items: [
-                  { label: "About Us", href: "about" },
-                  { label: "Rooms", href: "rooms" }
+                  { label: "About Us", href: "#about" },
+                  { label: "Rooms", href: "#features" }
                 ]
               },
               {
                 title: "Support",
                 items: [
-                  { label: "Contact", href: "contact" },
-                  { label: "FAQ", href: "faq" }
+                  { label: "Contact", href: "#contact" },
+                  { label: "FAQ", href: "#faq" }
                 ]
               }
             ]}
